@@ -44,7 +44,7 @@ for (const name of files) {
     beforeEach(() => {
       return atom.packages.activatePackage(path.resolve(__dirname, '../'))
         .then(() => {
-          parser = new parsers[parserName](atom.config.get('docblockr'));
+          parser = new parsers[parserName]();
         });
     });
 
