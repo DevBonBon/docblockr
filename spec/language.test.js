@@ -15,8 +15,6 @@ const path = require('path');
 const yaml = require('js-yaml');
 const { expect } = require('chai');
 
-const { describe, beforeEach, it } = global;
-
 // Hack to let us call parsers by filename
 const parsers = {
   JsParser,
@@ -44,9 +42,9 @@ for (const name of files) {
     delete dataset.name;
 
     beforeEach(() => {
-      return global.atom.packages.activatePackage(path.resolve(__dirname, '../'))
+      return atom.packages.activatePackage(path.resolve(__dirname, '../'))
         .then(() => {
-          parser = new parsers[parserName](global.atom.config.get('docblockr'));
+          parser = new parsers[parserName](atom.config.get('docblockr'));
         });
     });
 
