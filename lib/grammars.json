@@ -1,0 +1,42 @@
+[
+  {
+    "file": "actionscript",
+    "scopes": [ "source.actionscript.2", "source.actionscript.3", "source.haxe" ]
+  },
+  {
+    "file": "coffee",
+    "scopes": [ "source.coffee" ]
+  },
+  {
+    "file": "cpp",
+    "scopes": [ "source.cpp", "source.c", "source.cuda" ]
+  },
+  {
+    "file": "java",
+    "scopes": [ "source.java", "source.groovy", "source.processing" ]
+  },
+  {
+    "file": "javascript",
+    "scopes": [ "source.js" ]
+  },
+  {
+    "file": "objc",
+    "scopes": [ "source.objc", "source.objcpp" ]
+  },
+  {
+    "file": "php",
+    "scopes": [ "text.html.php" ]
+  },
+  {
+    "file": "rust",
+    "scopes": [ "source.rust" ]
+  },
+  {
+    "file": "sass",
+    "scopes": [ "source.sass", "source.css.scss" ]
+  },
+  {
+    "file": "typescript",
+    "scopes": [ "source.ts" ]
+  }
+]
