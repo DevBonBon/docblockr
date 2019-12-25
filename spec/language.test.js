@@ -1,34 +1,7 @@
-const JsParser = require('../lib/languages/javascript');
-const CppParser = require('../lib/languages/cpp');
-const RustParser = require('../lib/languages/rust');
-const PhpParser = require('../lib/languages/php');
-const CoffeeParser = require('../lib/languages/coffee');
-const ActionscriptParser = require('../lib/languages/actionscript');
-const ObjCParser = require('../lib/languages/objc');
-const JavaParser = require('../lib/languages/java');
-const TypescriptParser = require('../lib/languages/typescript');
-const ProcessingParser = require('../lib/languages/processing');
-const SassParser = require('../lib/languages/sass');
-
 const fs = require('fs');
 const path = require('path');
 const yaml = require('js-yaml');
 const { expect } = require('chai');
-
-// Hack to let us call parsers by filename
-const parsers = {
-  JsParser,
-  CppParser,
-  RustParser,
-  PhpParser,
-  CoffeeParser,
-  ActionscriptParser,
-  ObjCParser,
-  JavaParser,
-  TypescriptParser,
-  ProcessingParser,
-  SassParser
-};
 
 var filepath = path.resolve(path.join(__dirname, 'dataset/languages'));
 var files = fs.readdirSync(filepath);
@@ -44,7 +17,7 @@ for (const name of files) {
     beforeEach(() => {
       return atom.packages.activatePackage(path.resolve(__dirname, '../'))
         .then(() => {
-          parser = new parsers[parserName](atom.config.get('docblockr'));
+          parser = new (require(`../lib/grammars/${parserName}`))();
         });
     });
 

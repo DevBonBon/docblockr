@@ -1,0 +1,12 @@
+[
+  ["ActionScript", "ActionScript 3", "Haxe"],
+  ["C", "C++", "CUDA"],
+  ["CoffeeScript"],
+  ["Java", "Groovy", "Processing"],
+  ["JavaScript"],
+  ["Objective-C", "Objective-C++"],
+  ["PHP"],
+  ["Rust"],
+  ["Sass", "SCSS"],
+  ["TypeScript"]
+]
