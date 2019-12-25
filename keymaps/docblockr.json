@@ -1,5 +1,5 @@
 {
-    "atom-workspace atom-text-editor:not([mini])": {
+    "atom-text-editor:not([mini])": {
         "tab": "docblockr:parse-tab"
     },
     "atom-text-editor:not([mini])": {
