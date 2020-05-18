@@ -342,16 +342,6 @@ getFunctionReturnType:
         - [foo, null]
         - false
 
-isExistingComment:
-    -
-        - should return true if line begins with "*"
-        - "* comment"
-        - true
-    -
-        - should return false if line is a object generator shorthand
-        - "* funcName(arg1, arg2, ...restArg) {}"
-        - false
-
 parseClass:
     -
         - should parse the class name
