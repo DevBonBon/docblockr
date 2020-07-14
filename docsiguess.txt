@@ -1,0 +1,85 @@
+Hey, sorry for going silent for such a long time!
+I'm still working on that customizability feature and thought I should record my progress with it so far
+(and maybe explain why there's no "general cleanup" pull request like promised)
+
+### TLDR
+**I realized incrementally improving and updating the code would be incredibly hard / impossible,
+so now I'm "_just_" aiming to rewrite the whole thing in one go.**
+And as that entails large changes you should have input on the choices I've made.
+(This will also serve as a base for any new documentation, and to help me organize my thoughts)
+
+This new version will support automatic documenting _only_ on tree-sitter languages.
+I tried for a long time to make the regexp angle work, but it's not possible to do in a
+clean / robust / maintainable way.
+So now we leverage the work done by tree-sitter.
+
+My vision is to declare "documenters" in json, much like atom declares its language files.
+The idea is to maintain these outside the main package, to spread the load of maintaining them
+and to allow contributors to easily create new ones without us having to host them in the main repo.
+
+Only a "Generic" documenter will bundled with the main package, that offers sensible defaults
+for many of the features, but doesn't offer automatic documenting.
+
+Currently these documenters hold these fields:
+
+{
+  // Values are tree-parser node type strings
+  // When invoking the automatic documenter, these are used to search for entry points
+  // bellow the cursor(s). We have to iterate over all matching nodes defined in "pattern",
+  // so we use this to cut down on the list length. Matching typeIds have to also be defined in "pattern".
+  entries: []
+
+  // A javascript Object, where each key is a typeId integer given by the tree-parser grammar
+  // and each value is either an array of further typeId value pairs
+  // or a function name as a string. These functions are provided by the main package,
+  // but the documenter can also add new ones / replace existing ones
+  // These functions return an array of "Block" objects, that are used to construct
+  // the documentation. Keys can also be strings, in which case they represent default
+  // fields to be used during the Block creation.
+  // example:
+  // [ // Javascript tree-parser typeIds
+  // // Method definition
+  // [206, [
+  //   // Method body statement
+  //   [134, [
+  //     // Return statement
+  //     [147, [
+  //       ['tag', 'returns'],
+  //         // Object primitive
+  //         [159, JavaScript.value]
+  //       ]]
+  //     ]]
+  //   ]]
+  // ]
+  pattern: []
+
+  // Keys represent possible variable types and values their human readable names.
+  // example: { ARRAY: 'Array', BOOLEAN: 'Boolean' }
+  types: {}
+
+  dictionary = {
+    type: {
+      ...this.dictionary.type || {},
+      159: this.types.OBJECT,
+      105: this.types.NUMBER
+    }
+  };
+
+  // disable comment block matchin when inside these nodes
+  disabled = [/* whatever the regex node is */];
+
+  //
+  comment = {
+    inline: ['//'],
+    block: ['/*', '*/'],
+    docblock: ['/**', '*/']
+  };
+}
+
+All of these can be cahnged in the settings btw. documenter defined settings can be overwriten by scoped settings.
+global settings only hold global settings haha, like the current mode jne.
+The settings window will also hold a dwopdownlist of all the installed documenters, so settings for different languages
+can be edited easier. the current one will always be channged to the latest texteditor grammar
+
+
+no more deindent command on block comment closer

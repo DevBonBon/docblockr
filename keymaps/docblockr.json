@@ -1,8 +1,0 @@
-{
-  "atom-text-editor:not([mini])": {
-    "*": "docblockr:comment",
-    "tab": "docblockr:parse-tab",
-    "enter": "docblockr:parse-enter",
-    "shift-enter": "docblockr:parse-inline"
-  }
-}

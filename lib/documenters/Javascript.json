@@ -1,0 +1,58 @@
+{
+  "scopes": ["source.js"],
+  "comments": {
+    "inline": [["//"]],
+    "block": [["/*"]],
+    "doc": [["/**", "*/"]]
+  },
+  "dictionary": {
+    "type": {
+      "null": "",
+      "undefined": null
+    }
+  },
+  "recorders": {
+    "identifier": [
+      {
+        "identifier": ["text"]
+      }
+    ],
+    "assignment": [
+      {
+        "identifier": ["leftNode", "text"],
+        "value": ["rightNode", "text"],
+        "type": ["rightNode", "typeId"]
+      }
+    ],
+    "value": [
+      {
+        "value": ["text"],
+        "type": ["rightNode", "typeId"]
+      }
+    ]
+  },
+  "pattern": {
+    "206": {
+      "tag": "name",
+      "229": ["identifier"],
+      "204": {
+        "tag": "param",
+        "1": ["identifier"],
+        "160": ["assignment"],
+        "228": {
+          "230": ["identifier"],
+          "207": {
+            "1": ["identifier"],
+            "184": ["assignment"]
+          }
+        }
+      },
+      "134": {
+        "147": {
+          "tag": "returns",
+          "159": ["value"]
+        }
+      }
+    }
+  }
+}
