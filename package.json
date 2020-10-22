@@ -4,34 +4,39 @@
   "description": "A helper package for writing documentation",
   "repository": "https://github.com/nikhilkalige/docblockr",
   "license": "MIT",
-  "main": "./lib/Docblockr.js",
+  "main": "./lib/DocblockrWrapper.js",
   "scripts": {
     "lint": "semistandard",
     "lint:fix": "npm run lint -- --fix",
     "test": "npm run lint:fix && atom --test spec"
   },
+  "dependencies": {
+    "fs-extra": "^9.0.1",
+    "promise.any": "^2.0.1",
+    "scoped-property-store": "^0.17.0"
+  },
   "devDependencies": {
     "@atom/mocha-test-runner": "^1.6.0",
     "js-yaml": "^3.13.1",
-    "semistandard": "^14.2.2"
+    "semistandard": "^14.2.3"
   },
   "engines": {
     "atom": ">=1.47.0",
     "node": ">=12.0.0"
   },
   "atomTestRunner": "@atom/mocha-test-runner",
+  "consumedServices": {
+    "snippets-dev": {
+      "versions": {
+        "^0.2.0": "snippets"
+      }
+    }
+  },
   "providedServices": {
     "docblockr": {
       "description": "Provides the ability to define and load documenters for existing languages.",
       "versions": {
         "0.0.0": "docblockr"
-      }
-    }
-  },
-  "consumedServices": {
-    "snippets": {
-      "versions": {
-        "^0.1.0": "snippets"
       }
     }
   },
