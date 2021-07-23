@@ -5,20 +5,19 @@
   "description": "A helper package for writing documentation",
   "repository": "https://github.com/nikhilkalige/docblockr",
   "license": "MIT",
-  "main": "./lib/docblockr.js",
   "scripts": {
     "lint": "semistandard",
     "lint:fix": "npm run lint -- --fix",
     "test": "npm run lint:fix && atom --test spec"
   },
   "dependencies": {
-    "xregexp": "^4.2.4"
+    "xregexp": "^4.4.1"
   },
   "devDependencies": {
-    "@atom/mocha-test-runner": "^1.6.0",
-    "chai": "^4.2.0",
-    "js-yaml": "^3.13.1",
-    "semistandard": "^14.2.0"
+    "@atom/mocha-test-runner": "^1.6.1",
+    "chai": "^4.3.4",
+    "js-yaml": "^4.1.0",
+    "semistandard": "^16.0.1"
   },
   "engines": {
     "atom": ">0.50.0"
