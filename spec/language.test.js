@@ -30,8 +30,8 @@ const parsers = {
   SassParser
 };
 
-var filepath = path.resolve(path.join(__dirname, 'dataset/languages'));
-var files = fs.readdirSync(filepath);
+const filepath = path.resolve(path.join(__dirname, 'dataset/languages'));
+const files = fs.readdirSync(filepath);
 
 for (const name of files) {
   const fileName = 'Parser_' + name.split('.')[0];
