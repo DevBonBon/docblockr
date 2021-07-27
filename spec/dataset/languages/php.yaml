@@ -179,7 +179,7 @@ parse:
     -
         - should parse var first
         - "$foo;\nfunction bar() {}"
-        - ['${1:[\\$foo description]}', '@var ${1:[type]}']
+        - ['${1:[\$foo description]}', '@var ${1:[type]}']
 
 parseArgs:
     -
