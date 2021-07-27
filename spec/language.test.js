@@ -1,14 +1,13 @@
-const JsParser = require('../lib/languages/javascript');
-const CppParser = require('../lib/languages/cpp');
-const RustParser = require('../lib/languages/rust');
-const PhpParser = require('../lib/languages/php');
-const CoffeeParser = require('../lib/languages/coffee');
-const ActionscriptParser = require('../lib/languages/actionscript');
-const ObjCParser = require('../lib/languages/objc');
-const JavaParser = require('../lib/languages/java');
-const TypescriptParser = require('../lib/languages/typescript');
-const ProcessingParser = require('../lib/languages/processing');
-const SassParser = require('../lib/languages/sass');
+const JsParser = require('../lib/grammars/JavaScript');
+const CppParser = require('../lib/grammars/C');
+const RustParser = require('../lib/grammars/Rust');
+const PhpParser = require('../lib/grammars/PHP');
+const CoffeeParser = require('../lib/grammars/CoffeeScript');
+const ActionscriptParser = require('../lib/grammars/ActionScript');
+const ObjCParser = require('../lib/grammars/Objective-C');
+const JavaParser = require('../lib/grammars/Java');
+const TypescriptParser = require('../lib/grammars/TypeScript');
+const SassParser = require('../lib/grammars/Sass');
 
 const fs = require('fs');
 const path = require('path');
@@ -26,7 +25,6 @@ const parsers = {
   ObjCParser,
   JavaParser,
   TypescriptParser,
-  ProcessingParser,
   SassParser
 };
 
