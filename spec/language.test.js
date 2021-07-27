@@ -44,7 +44,7 @@ for (const name of files) {
     beforeEach(() => {
       return atom.packages.activatePackage(path.resolve(__dirname, '../'))
         .then(() => {
-          parser = new parsers[parserName](atom.config.get('docblockr'));
+          parser = parsers[parserName];
         });
     });
 
@@ -52,12 +52,9 @@ for (const name of files) {
       describe(key, () => {
         dataset[key].forEach((data) => {
           it(data[0], () => {
-            let out;
-            if (Array.isArray(data[1])) {
-              out = parser[key].apply(parser, data[1]);
-            } else {
-              out = parser[key](data[1]);
-            }
+            const out = Array.isArray(data[1])
+              ? parser[key](...data[1])
+              : parser[key](data[1]);
             expect(out).to.deep.equal(data[2]);
           });
         });
